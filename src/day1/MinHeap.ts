@@ -46,27 +46,22 @@ export default class MinHeap {
             return;
         }
 
-        const p = this.parent(idx);
-        const parentValue = this.data[p];
+        const parent = this.parent(idx);
+        const parentValue = this.data[parent];
         const value = this.data[idx];
 
         if (parentValue > value) {
             // go up!
             this.data[idx] = parentValue;
-            this.data[p] = value;
-            this.heapifyUp(p);
+            this.data[parent] = value;
+            this.heapifyUp(parent);
         }
     }
 
     private heapifyDown(idx: number): void {
-        if (idx >= this.length) {
-            return;
-        }
-
         const lIdx = this.leftChild(idx);
         const rIdx = this.rightChild(idx);
-
-        if (rIdx >= this.length || lIdx >= this.length) {
+        if (idx >= this.length || lIdx >= this.length) {
             return;
         }
 
