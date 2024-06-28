@@ -4,6 +4,7 @@ export default function bfs(
     needle: number): number[] | null {
 
     const seen = new Array(graph.length).fill(false);
+    // used to reconstruct the path
     const prev = new Array(graph.length).fill(-1);
 
     const q = [source];
@@ -15,7 +16,7 @@ export default function bfs(
             break;
         }
 
-        const adjs = graph[curr];
+        const adjs: number[] = graph[curr];
         for (let i = 0; i < adjs.length; i++) {
             if (adjs[i] === 0 || seen[i]) continue;
 
